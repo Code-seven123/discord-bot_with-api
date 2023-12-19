@@ -8,6 +8,7 @@ import {
 console.log('execute plugins')
 
 export default {
+  type: InteractionType.MESSAGE_COMPONENT,
   head: {
     name: "testbot",
     description: "testing bot",
