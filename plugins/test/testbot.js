@@ -8,7 +8,7 @@ import {
 console.log('execute plugins')
 
 export default {
-  type: InteractionType.MESSAGE_COMPONENT,
+  type: 'testbot_button',
   head: {
     name: "testbot",
     description: "testing bot",
@@ -26,7 +26,7 @@ export default {
             components: [{
               type: MessageComponentTypes.BUTTON,
               // Value for your app to identify the button
-              custom_id: 'my_button',
+              custom_id: 'testbot_button',
               label: 'time',
               style: ButtonStyleTypes.PRIMARY,
             },
@@ -37,7 +37,7 @@ export default {
     } else if(msg.type === InteractionType.MESSAGE_COMPONENT) {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
-      if (componentId === 'my_button') {
+      if (componentId === 'testbot_button') {
         console.log(req.body);
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,

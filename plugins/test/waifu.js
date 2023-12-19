@@ -7,7 +7,7 @@ import {
 import fetch from 'node-fetch'
 console.log(InteractionType)
 export default {
-  type: InteractionType.MESSAGE_COMPONENT,
+  type: 'waifu_select',
   head: {
     name: "waifu",
     description: "testing bot",
@@ -25,7 +25,7 @@ export default {
             components: [{
               type: MessageComponentTypes.STRING_SELECT,
               // Value for your app to identify the select menu interactions
-              custom_id: 'my_select',
+              custom_id: 'waifu_select',
               // Select options - see https://discord.com/developers/docs/interactions/message-components#select-menu-object-select-option-structure
               options: [{
                 label: 'blush',
@@ -53,7 +53,7 @@ export default {
     if (msg.type === InteractionType.MESSAGE_COMPONENT) {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
-      if (componentId === 'my_select') {
+      if (componentId === 'waifu_select') {
         const selectedOption = msg.data.values[0];
         const draw = async (type) => {
           try {
