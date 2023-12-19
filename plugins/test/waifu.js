@@ -9,7 +9,7 @@ console.log(InteractionType)
 export default {
   type: InteractionType.MESSAGE_COMPONENT,
   head: {
-    name: "nsfw",
+    name: "waifu",
     description: "testing bot",
     options: []
   },
