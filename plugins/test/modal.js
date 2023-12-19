@@ -42,14 +42,14 @@ export default {
       })
     }
     if (msg.type === InteractionType.MODAL_SUBMIT) {
-      const modalId = data.custom_id;
+      const modalId = msg.data.custom_id;
     // user ID of member who filled out modal
     const userId = req.body.member.user.id;
 
     if (modalId === 'yt_modal') {
       let modalValues = '';
       // Get value of text inputs
-      for (let action of data.components) {
+      for (let action of msg.data.components) {
         let inputComponent = action.components[0];
         modalValues += `${inputComponent.custom_id}: ${inputComponent.value}\n`;
       }
