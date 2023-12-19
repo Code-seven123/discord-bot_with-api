@@ -32,7 +32,7 @@ export default {
           ],
         }})
     }
-    console.log(msg.type)
+    console.log(msg.type === InteractionType.MESSAGE_COMPONENT)
     if (msg.type === InteractionType.MESSAGE_COMPONENT) {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
