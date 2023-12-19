@@ -5,7 +5,7 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import fetch from 'node-fetch'
-console.log(InteractionType)
+const ap = 'select'
 export default {
   type: 'waifu_select',
   head: {
@@ -54,7 +54,9 @@ export default {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
       if (componentId === 'waifu_select') {
-        const selectedOption = msg.data.values[0];
+        if (ap == "select") {
+          const selectedOption = msg.data.values[0];
+        }
         const draw = async (type) => {
           try {
             let res = await fetch(`https://api.waifu.pics/sfw/${type}`)
