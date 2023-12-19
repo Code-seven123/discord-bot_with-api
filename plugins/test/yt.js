@@ -60,10 +60,8 @@ export default {
         thumbnail: {
 	  url: data.thumbnail
        	}.
-        fields: [
-           nama: 'your link download',
-           value: down
-        ],
+        description: down,
+        timestamp: new Date().toISOString(),
       }
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
