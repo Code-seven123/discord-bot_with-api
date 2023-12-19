@@ -7,6 +7,7 @@ import {
 import fetch from 'node-fetch'
 console.log(InteractionType)
 export default {
+  type: InteractionType.MESSAGE_COMPONENT,
   head: {
     name: "nsfw",
     description: "testing bot",
