@@ -24,7 +24,7 @@ const discord_api = axios.create({
 app.post('/interactions', verifyKeyMiddleware(config.PUBLIC_KEY), async (req, res) => {
   const msg = req.body
   for (const command of commands) {
-    if (msg.data.name === commands.head.name) {
+    if (msg.data.name === command.head.name) {
        const plant = await command.body.plant(msg, req, res);
        return plant
     }
