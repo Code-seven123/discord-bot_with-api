@@ -5,6 +5,8 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 
+console.log('execute plugins')
+
 export default {
   head: {
     name: "testbot",
