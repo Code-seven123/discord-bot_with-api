@@ -23,7 +23,7 @@ const discord_api = axios.create({
 });
 app.post('/interactions', verifyKeyMiddleware(config.PUBLIC_KEY), async (req, res) => {
   const msg = req.body
-  console.log(msg.type === InteractionType.MESSAGE_COMPONENT)
+  console.log(msg.type)
   for (const command of commands) {
     if (msg.data.name === command.head.name) {
        const plant = await command.body(msg, req, res);
