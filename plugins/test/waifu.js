@@ -84,7 +84,7 @@ export default {
                   components: [{
                     type: MessageComponentTypes.BUTTON,
                     // Value for your app to identify the button
-                    custom_id: 'id_blowjob',
+                    custom_id: 'waifu_select',
                     label: 'next',
                     style: ButtonStyleTypes.PRIMARY,
                   }],
@@ -106,7 +106,7 @@ export default {
                   components: [{
                     type: MessageComponentTypes.BUTTON,
                     // Value for your app to identify the button
-                    custom_id: 'id_blowjob',
+                    custom_id: 'waifu_select',
                     label: 'next',
                     style: ButtonStyleTypes.PRIMARY,
                   }],
@@ -116,7 +116,7 @@ export default {
         } else if (selectedOption == 'option_3') {
           let embed = {
             image: {
-              url: await draw('waifu')
+              url: await draw('waifu_select')
             }
           }
           return res.send({
