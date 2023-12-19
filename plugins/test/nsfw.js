@@ -13,7 +13,7 @@ export default {
     options: []
   },
   async body(msg, req, res) {
-    if (type === InteractionType.APPLICATION_COMMAND) {
+    if (msg.type === InteractionType.APPLICATION_COMMAND) {
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
@@ -49,7 +49,7 @@ export default {
         },
       })
     }
-    if (type === InteractionType.MESSAGE_COMPONENT) {
+    if (msg.type === InteractionType.MESSAGE_COMPONENT) {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
       if (componentId === 'my_select') {
