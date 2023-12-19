@@ -56,11 +56,11 @@ export default {
       let data = await youtubedl(modalValues)
       let down = await data.video.auto.download()
       let embed = {
-	title: data.title,
+	      title: data.title,
         thumbnail: {
-	  url: data.thumbnail
-       	}.
-        description: down,
+	         url: data.thumbnail
+       	},
+        url: down,
         timestamp: new Date().toISOString(),
       }
       return res.send({
