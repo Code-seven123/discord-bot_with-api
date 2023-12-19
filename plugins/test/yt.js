@@ -72,7 +72,7 @@ export default {
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: `Your <@${userId}> video \n ${down}`,
+          content: `Your <@${userId}> video \n ${await data.video.auto.download()}`,
           //embeds: [embed],
         },
       });
