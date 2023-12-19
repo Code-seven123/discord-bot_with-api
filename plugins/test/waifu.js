@@ -97,7 +97,7 @@ export default {
         } else if (selectedOption == 'option_3') {
           let embed = {
             image: {
-              url: await draw('waifu_select')
+              url: await draw('waifu')
             }
           }
           return res.send({
