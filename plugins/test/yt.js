@@ -54,6 +54,7 @@ export default {
         modalValues = inputComponent.value;
       }
       console.log(modalValues)
+      try {
       let data = await youtubedl(modalValues)
       let down = await data.video.auto.download()
       let embed = {
@@ -65,6 +66,7 @@ export default {
         timestamp: new Date().toISOString(),
       }
       console.log(embed)
+      } catch (e) { console.log(e) }
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
