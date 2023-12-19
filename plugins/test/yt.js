@@ -5,8 +5,8 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import fetch from 'node-fetch'
-console.log(InteractionType)
-console.log(InteractionResponseType)
+import { youtubedl } from '@bochilteam/scraper-sosmed'
+
 export default {
   type: 'yt_modal',
   head: {
@@ -51,13 +51,22 @@ export default {
       // Get value of text inputs
       for (let action of msg.data.components) {
         let inputComponent = action.components[0];
-        modalValues += `${inputComponent.custom_id}: ${inputComponent.value}\n`;
+        modalValues = inputComponent.value;
       }
-
+      let data = await youtubedl(modalValues)
+      let down = await data.video.auto.download()
+      let embed = {
+	title: data.title,
+        thumbnail: {
+	  url: data.thumbnail
+	}
+      }
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: `<@${userId}> typed the following (in a modal):\n\n${modalValues}`,
+          content: `Your <@${userId}> video`,
+          embeds: [embed],
+          files: [doen]
         },
       });
     }
