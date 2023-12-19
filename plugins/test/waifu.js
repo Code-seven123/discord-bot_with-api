@@ -69,7 +69,7 @@ export default {
           }
         }
 
-        if (selectedOption == 'option_1' && ) {
+        if (selectedOption == 'option_1') {
           let embed = {
             image: {
               url: await draw('blush')
