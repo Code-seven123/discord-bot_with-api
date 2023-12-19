@@ -54,9 +54,7 @@ export default {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
       if (componentId === 'waifu_select') {
-        if (ap == "select") {
-          const selectedOption = msg.data.values[0];
-        }
+        const selectedOption = msg.data.values[0];
         const draw = async (type) => {
           try {
             let res = await fetch(`https://api.waifu.pics/sfw/${type}`)
@@ -71,7 +69,7 @@ export default {
           }
         }
 
-        if (selectedOption == 'option_1') {
+        if (selectedOption == 'option_1' && ) {
           let embed = {
             image: {
               url: await draw('blush')
@@ -81,16 +79,6 @@ export default {
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
               embeds: [embed],
-              components: [{
-                  type: MessageComponentTypes.ACTION_ROW,
-                  components: [{
-                    type: MessageComponentTypes.BUTTON,
-                    // Value for your app to identify the button
-                    custom_id: 'waifu_select',
-                    label: 'next',
-                    style: ButtonStyleTypes.PRIMARY,
-                  }],
-                }],
             }
           })
         } else if (selectedOption == 'option_2') {
@@ -103,16 +91,7 @@ export default {
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
               embeds: [embed],
-              components: [{
-                  type: MessageComponentTypes.ACTION_ROW,
-                  components: [{
-                    type: MessageComponentTypes.BUTTON,
-                    // Value for your app to identify the button
-                    custom_id: 'waifu_select',
-                    label: 'next',
-                    style: ButtonStyleTypes.PRIMARY,
-                  }],
-                }],
+              
             }
           })
         } else if (selectedOption == 'option_3') {
@@ -125,16 +104,6 @@ export default {
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
               embeds: [embed],
-              components: [{
-                  type: MessageComponentTypes.ACTION_ROW,
-                  components: [{
-                    type: MessageComponentTypes.BUTTON,
-                    // Value for your app to identify the button
-                    custom_id: 'id_blowjob',
-                    label: 'next',
-                    style: ButtonStyleTypes.PRIMARY,
-                  }],
-                }],
             }
           })
         } else {
