@@ -25,7 +25,7 @@ app.post('/interactions', verifyKeyMiddleware(config.PUBLIC_KEY), async (req, re
   const msg = req.body
   console.log(msg.type)
   for (const command of commands) {
-    if (msg.data.name === command.head.name) {
+    if (msg.data.name === command.head.name || msg.type === command.type) {
        const plant = await command.body(msg, req, res);
        return plant
     }
