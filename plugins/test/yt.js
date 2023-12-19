@@ -63,6 +63,7 @@ export default {
         url: down,
         timestamp: new Date().toISOString(),
       }
+      console.log(embed)
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
