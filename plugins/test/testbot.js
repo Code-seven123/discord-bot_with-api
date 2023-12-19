@@ -31,9 +31,7 @@ export default {
           },
           ],
         }})
-    }
-    console.log(msg.type === InteractionType.MESSAGE_COMPONENT)
-    if (msg.type == InteractionType.MESSAGE_COMPONENT) {
+    } else if(msg.type == InteractionType.MESSAGE_COMPONENT) {
       const componentId = msg.data.custom_id;
       const userId = req.body.member.user.id;
       if (componentId === 'my_button') {
