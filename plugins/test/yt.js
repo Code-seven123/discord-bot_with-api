@@ -53,6 +53,7 @@ export default {
         let inputComponent = action.components[0];
         modalValues = inputComponent.value;
       }
+      console.log(modalValues)
       let data = await youtubedl(modalValues)
       let down = await data.video.auto.download()
       let embed = {
