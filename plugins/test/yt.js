@@ -56,17 +56,17 @@ export default {
       let data = await youtubedl(modalValues)
       let down = await data.video.auto.download()
       let embed = {
-	title: data.title,
+	       title: data.title,
         thumbnail: {
-	  url: data.thumbnail
-	}
+	        url: data.thumbnail
+       	}.
+        url: down
       }
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: `Your <@${userId}> video`,
           embeds: [embed],
-          files: [doen]
         },
       });
     }
