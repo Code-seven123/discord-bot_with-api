@@ -54,19 +54,7 @@ export default {
         modalValues = inputComponent.value;
       }
       console.log(modalValues)
-      /*try {
-      let data = await youtubedl(modalValues)
-      let down = await data.video.auto.download()
-      let embed = {
-	      title: data.title,
-              thumbnail: {
-	         url: data.thumbnail
-       	},
-        url: await data.video.auto.download(),
-        timestamp: new Date().toISOString(),
-      }
-      console.log(embed)
-      } catch (e) { console.log(e) }*/
+      
       let data = await youtubedl(modalValues)
       let down = await data.video.auto.download()
       return res.send({
@@ -74,6 +62,10 @@ export default {
         data: {
           content: `Your <@${userId}> video \n ${await data.video.auto.download()}`,
           //embeds: [embed],
+          files: [
+             attachment: down,
+             name: 'downyt.mp4'
+          ]
         },
       });
     }
