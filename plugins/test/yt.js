@@ -5,8 +5,13 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import fetch from 'node-fetch'
-import ytdl from '../../src/yt_download.js'
-
+import ytdl from 'youtube-dl'
+import fs from 'fs'
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const fakeName = `${generateRandomNumber(1200000, 10000000)}.mp4`
+const output = `../../temp/${fakeName}`
 export default {
   type: 'yt_modal',
   head: {
@@ -55,17 +60,31 @@ export default {
       }
       console.log(modalValues)
       const data = await ytdl(modalValues)
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          content: `Your <@${userId}> video`,
-          //embeds: [embed],
-          files: [{
-             attachment: data.url,
-             name: 'downyt.mp4'
-          }]
-        },
-      });
+      
+      data.pipe(fs.createWriteStream(output, { flags: 'a' }))
+      
+      data.on('end', async () => {
+       await ytdl.getInfo(modalValues, (err, info) => {
+          const embed = {
+             title: info.title,
+ 	     thumbnail: {
+               url: info.thumbnail,
+             },
+             url: info.url
+          }
+          return res.send({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: `Your <@${userId}> video`,
+              embeds: [embed],
+              files: [{
+                 attachment: output,
+                 name: fakeName
+              }]
+            },
+          });
+        })
+     })
     }
     }
   },
