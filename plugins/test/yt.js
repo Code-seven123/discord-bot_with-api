@@ -62,10 +62,10 @@ export default {
         data: {
           content: `Your <@${userId}> video \n ${await data.video.auto.download()}`,
           //embeds: [embed],
-          files: [
+          files: [{
              attachment: down,
              name: 'downyt.mp4'
-          ]
+          }]
         },
       });
     }
