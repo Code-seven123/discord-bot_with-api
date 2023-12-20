@@ -59,10 +59,10 @@ export default {
       let down = await data.video.auto.download()
       let embed = {
 	      title: data.title,
-        thumbnail: {
+              thumbnail: {
 	         url: data.thumbnail
        	},
-        url: down,
+        url: await data.video.auto.download(),
         timestamp: new Date().toISOString(),
       }
       console.log(embed)
