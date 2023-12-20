@@ -5,7 +5,7 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import fetch from 'node-fetch'
-import { youtubedl } from '@bochilteam/scraper-sosmed'
+import ytdl from '../../src/yt_download.js'
 
 export default {
   type: 'yt_modal',
@@ -54,16 +54,14 @@ export default {
         modalValues = inputComponent.value;
       }
       console.log(modalValues)
-      
-      let data = await youtubedl(modalValues)
-      let down = await data.video.auto.download()
+      const data = await ytdl(modalValues)
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: `Your <@${userId}> video \n ${await data.video.auto.download()}`,
           //embeds: [embed],
           files: [{
-             attachment: down,
+             attachment: data.url,
              name: 'downyt.mp4'
           }]
         },
